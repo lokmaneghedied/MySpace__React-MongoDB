@@ -16,7 +16,7 @@ const NewAccount = () => {
 
     return ( 
         <div className="bg-blue-100 min-h-screen grid justify-items-center content-center">
-            <div className="p-1 m-1 w-1/3 shadow-xl bg-white font-serif rounded-lg divide-y divide-slate-400">
+            <div className="p-1 m-1 min-w-min md:w-1/3 shadow-xl bg-white font-serif rounded-lg divide-y divide-slate-400">
                 <div className="flex justify-between">
                     <div className="p-2">
                         <h3 className="font-semibold">sign Up</h3>

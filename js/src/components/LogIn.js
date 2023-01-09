@@ -15,7 +15,7 @@ const LogIn = () => {
     };
 
     return ( 
-        <div className="grid justify-items-center p-1 m-1 shadow-xl bg-white font-serif rounded-lg h-2/4 w-1/4 divide-y divide-slate-400">
+        <div className="grid justify-items-center p-1 m-1 shadow-xl bg-white font-serif rounded-lg min-h-min w-4/6 md:w-1/3 divide-y divide-slate-400 ">
             <form onSubmit={handlLogIn} className='grid justify-items-center content-center'>
                 <div className='p-2 space-y-4'>
                     <input className="border border-slate-400 rounded w-full p-2 bg-indigo-50 h-12" type="email" placeholder='E-mail' value={email} onChange={(e)=>setEmail(e.target.value)} required/>
