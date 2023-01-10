@@ -1,18 +1,24 @@
 import { useState } from "react" ;
+
 import NewComment from "./NewComment" ;
 import EditPost from "./EditPost";
 
-const PostsList = ({posts}) => {
-    const liked = 'flex justify-start hover:border rounded-lg w-min px-1 cursor-pointer bg-blue-400'  
-    const unLiked = 'flex justify-start hover:border rounded-lg w-min px-1 cursor-pointer'
+const PostsList = ({posts, getPosts}) => {
     const [newCommentSection , setNewCommentSection] = useState(false);
     const [changedPostId, setchangedPostId] = useState('');
     const [editPostSection, setEditPostSection] = useState(false)
-
+    
+    //Like ClassNames
+    const liked = 'flex justify-start hover:border rounded-lg w-min px-1 cursor-pointer bg-blue-400'  
+    const unLiked = 'flex justify-start hover:border rounded-lg w-min px-1 cursor-pointer'
+    
     const deletePost = (id)=>{
         fetch(`http://127.0.0.1:5000/posts/delete/${id}`,{
             method : 'DELETE',
             headers : {'Content-type':'application/json'},
+        })
+        .then(()=>{
+            getPosts();
         })
     }
 
@@ -20,6 +26,9 @@ const PostsList = ({posts}) => {
         fetch(`http://127.0.0.1:5000/posts/editlike/${id}`,{
             method : 'PUT',
             headers : {'Content-type':'application/json'},
+        })
+        .then(()=>{
+            getPosts();
         })
     }
     
@@ -42,6 +51,9 @@ const PostsList = ({posts}) => {
             method : 'PUT',
             headers : {'Content-type':'application/json'},
             body:JSON.stringify(deletedComment)
+        })
+        .then(()=>{
+            getPosts();
         })
     }
 
@@ -100,8 +112,8 @@ const PostsList = ({posts}) => {
                     </div>
             ))}
             <div className="grid justify-items-center">
-                {newCommentSection && <NewComment setNewCommentSection={setNewCommentSection} changedPostId={changedPostId} />}
-                {editPostSection && <EditPost changedPostId={changedPostId} setEditPostSection={setEditPostSection}/>} 
+                {newCommentSection && <NewComment getPosts={getPosts} setNewCommentSection={setNewCommentSection} changedPostId={changedPostId} />}
+                {editPostSection && <EditPost getPosts={getPosts} changedPostId={changedPostId} setEditPostSection={setEditPostSection}/>} 
             </div>
         </div>
      );

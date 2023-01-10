@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-const NewComment = ({setNewCommentSection, changedPostId}) => {
+const NewComment = ({setNewCommentSection, changedPostId, getPosts}) => {
     const [content, setContent] = useState('')
    
     const addComment =(e)=>{
@@ -14,6 +14,9 @@ const NewComment = ({setNewCommentSection, changedPostId}) => {
             method:'PUT',
             headers : {'Content-type':'application/json'},
             body: JSON.stringify(comment)
+        })
+        .then(()=>{
+            getPosts();
         })
     }
 

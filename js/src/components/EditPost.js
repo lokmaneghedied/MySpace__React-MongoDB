@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const EditPost = ({changedPostId, setEditPostSection}) => {
+const EditPost = ({changedPostId, setEditPostSection, getPosts}) => {
 
     const [newTitle, setNewTitle] = useState('');
     const [newContent, setNewContent] = useState('');
@@ -19,7 +19,10 @@ const EditPost = ({changedPostId, setEditPostSection}) => {
             method:'PUT',
             headers : {'Content-type':'application/json'},
             body: JSON.stringify(changedPost)
-        });
+        })
+        .then(()=>{
+            getPosts();
+        })
     }
 
     return ( 
