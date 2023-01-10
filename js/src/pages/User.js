@@ -36,7 +36,7 @@ const User = () => {
         <div className="font-serif bg-blue-100 min-h-screen">
             <NavBar setNewPostSection={setNewPostSection}/>
             <div className="grid justify-items-center">
-                {newPostSection && <NewPost setNewPostSection={setNewPostSection} />}
+                {newPostSection && <NewPost setNewPostSection={setNewPostSection} getPosts={getPosts}/>}
                 {isLoading && <h3>loading data.....</h3>}
                 {error && <h3>{error}</h3>}
                 {posts && <PostsList posts={posts} getPosts={getPosts} />}

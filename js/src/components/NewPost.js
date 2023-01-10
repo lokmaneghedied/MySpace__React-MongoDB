@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const NewPost = ({setNewPostSection}) => {
+const NewPost = ({setNewPostSection, getPosts}) => {
     const [title, setTitle] = useState(null);
     const [content, setContent] = useState(null);
     
@@ -17,9 +17,10 @@ const NewPost = ({setNewPostSection}) => {
             headers: {'Content-type':'application/json'},
             body: JSON.stringify(newPost)
         })
-        .then(
-            setNewPostSection(false)
-            )            
+        .then(()=>{
+            setNewPostSection(false);
+            getPosts();
+        })        
         }
 
     return ( 
