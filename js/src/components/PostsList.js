@@ -100,7 +100,7 @@ const PostsList = ({posts, getPosts}) => {
                             </div>
                         </div>
                         {post.comments.map((comment)=>(
-                            <div className="grid justify-items-center">
+                            <div className="grid justify-items-center" key={comment.id}>
                                 <div className="w-11/12 bg-indigo-200 px-1 mb-1 hover:border shadow-inner rounded-md border-indigo-200 flex justify-between" key={comment.id}>
                                     <p>{comment.content}</p>
                                     <svg onClick={()=>deleteComment(post.id ,comment.id)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 40 25" strokeWidth="1.5" stroke="#dc2626" className="w-6 h-6 cursor-pointer">
