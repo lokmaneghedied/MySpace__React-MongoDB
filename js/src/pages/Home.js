@@ -7,7 +7,7 @@ const Home = () => {
         <h1 className="text-blue-500 md:text-6xl text-4xl font-medium">
           MySpace
         </h1>
-        <p className="md:text-2xl pt-3">Take this opportunity to express</p>
+        <p className="md:text-2xl pt-3">new description</p>
       </div>
       <LogIn />
     </div>
